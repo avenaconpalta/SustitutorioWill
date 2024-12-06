@@ -158,5 +158,124 @@ namespace will
                 Console.WriteLine(depto);
         }
     }
+    class Program
+    {
+        static Departamento[] departamentos = new Departamento[0];
+        static Propietario[] propietarios = new Propietario[0];
+        static Venta[] ventas = new Venta[0];
 
-    
+        static void Main(string[] args)
+        {
+            int opcion;
+            do
+            {
+                Console.WriteLine("\nMenú Principal:");
+                Console.WriteLine("1. Gestión de Departamentos");
+                Console.WriteLine("2. Gestión de Propietarios");
+                Console.WriteLine("3. Gestión de Ventas");
+                Console.WriteLine("4. Salir");
+                Console.Write("Seleccione una opción: ");
+                opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        MenuDepartamentos();
+                        break;
+                    case 2:
+                        MenuPropietarios();
+                        break;
+                    case 3:
+                        MenuVentas();
+                        break;
+                }
+            } while (opcion != 4);
+        }
+
+        static void MenuDepartamentos()
+        {
+            int opcion;
+            do
+            {
+                Console.WriteLine("\nGestión de Departamentos:");
+                Console.WriteLine("1. Crear");
+                Console.WriteLine("2. Listar");
+                Console.WriteLine("3. Eliminar");
+                Console.WriteLine("4. Volver");
+                Console.Write("Seleccione una opción: ");
+                opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        DepartamentoUtil.Crear(ref departamentos);
+                        break;
+                    case 2:
+                        DepartamentoUtil.Listar(departamentos);
+                        break;
+                    case 3:
+                        DepartamentoUtil.Eliminar(ref departamentos);
+                        break;
+                }
+            } while (opcion != 4);
+        }
+
+        static void MenuPropietarios()
+        {
+            int opcion;
+            do
+            {
+                Console.WriteLine("\nGestión de Propietarios:");
+                Console.WriteLine("1. Crear");
+                Console.WriteLine("2. Listar");
+                Console.WriteLine("3. Eliminar");
+                Console.WriteLine("4. Volver");
+                Console.Write("Seleccione una opción: ");
+                opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        PropietarioUtil.Crear(ref propietarios);
+                        break;
+                    case 2:
+                        PropietarioUtil.Listar(propietarios);
+                        break;
+                    case 3:
+                        PropietarioUtil.Eliminar(ref propietarios);
+                        break;
+                }
+            } while (opcion != 4);
+        }
+
+        static void MenuVentas()
+        {
+            int opcion;
+            do
+            {
+                Console.WriteLine("\nGestión de Ventas:");
+                Console.WriteLine("1. Crear");
+                Console.WriteLine("2. Listar");
+                Console.WriteLine("3. Búsqueda por Distritos");
+                Console.WriteLine("4. Volver");
+                Console.Write("Seleccione una opción: ");
+                opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        VentaUtil.Crear(ref ventas, departamentos, propietarios);
+                        break;
+                    case 2:
+                        VentaUtil.Listar(ventas);
+                        break;
+                    case 3:
+                        VentaUtil.BusquedaPorDistritos(departamentos);
+                        break;
+                }
+            } while (opcion != 4);
+        }
+    }
+}
+
+
